@@ -36,11 +36,22 @@ class App extends React.Component {
     });
   };
 
+  //Delete Todo
+  delTodo = id => {
+    this.setState({
+      todos: [...this.state.todos.filter(todo => todo.id !== id)]
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <h1>Dulce list App</h1>
-        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+        <Todos
+          todos={this.state.todos}
+          markComplete={this.markComplete}
+          delTodo={this.delTodo}
+        />
       </div>
     );
   }
