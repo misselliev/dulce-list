@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Todos from "./components/Todos";
+import Header from "./components/Layout/Header";
 
 class App extends React.Component {
   state = {
@@ -46,7 +47,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Dulce list App</h1>
+        <Header />
         <Todos
           todos={this.state.todos}
           markComplete={this.markComplete}
