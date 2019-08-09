@@ -1,14 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Todos from "./components/Todos";
 import Header from "./components/Layout/Header";
-
+import AddTodo from "./components/AddTodo";
+import uuid from "uuid";
 class App extends React.Component {
   state = {
     todos: [
       {
-        id: 1,
+        id: uuid.v4(),
         title: "Chase my toy",
         completed: false
       },
@@ -44,15 +44,28 @@ class App extends React.Component {
     });
   };
 
+  //Add Todo
+  addTodo = title => {
+    const newTodo = {
+      id: uuid.v4(),
+      title: title,
+      completed: false
+    };
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  };
+
   render() {
     return (
       <div className="App">
-        <Header />
-        <Todos
-          todos={this.state.todos}
-          markComplete={this.markComplete}
-          delTodo={this.delTodo}
-        />
+        <div className="container">
+          <Header />
+          <AddTodo addTodo={this.AddTodo} />
+          <Todos
+            todos={this.state.todos}
+            markComplete={this.markComplete}
+            delTodo={this.delTodo}
+          />
+        </div>
       </div>
     );
   }
